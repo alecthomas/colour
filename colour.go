@@ -64,9 +64,9 @@ var (
 	}
 )
 
-func Fprintf(w io.Writer, format string, args ...interface{}) (n int, err error) {
+func formatString(s string) string {
 	out := &bytes.Buffer{}
-	for _, match := range extract.FindAllStringSubmatch(format, -1) {
+	for _, match := range extract.FindAllStringSubmatch(s, -1) {
 		if match[1] != "" {
 			n := match[1][1]
 			out.WriteString(colours[n])
@@ -76,7 +76,37 @@ func Fprintf(w io.Writer, format string, args ...interface{}) (n int, err error)
 			out.WriteString(match[3])
 		}
 	}
-	return fmt.Fprintf(w, out.String(), args...)
+	return out.String()
+}
+
+func Fprintln(w io.Writer, args ...interface{}) (n int, err error) {
+	for i, arg := range args {
+		if s, ok := arg.(string); ok {
+			args[i] = formatString(s)
+		}
+	}
+	return fmt.Fprintln(w, args...)
+}
+
+func Println(args ...interface{}) (n int, err error) {
+	return Fprintln(os.Stdout, args...)
+}
+
+func Fprint(w io.Writer, args ...interface{}) (n int, err error) {
+	for i, arg := range args {
+		if s, ok := arg.(string); ok {
+			args[i] = formatString(s)
+		}
+	}
+	return fmt.Fprint(w, args...)
+}
+
+func Print(args ...interface{}) (n int, err error) {
+	return Fprintln(os.Stdout, args...)
+}
+
+func Fprintf(w io.Writer, format string, args ...interface{}) (n int, err error) {
+	return fmt.Fprintf(w, formatString(format), args...)
 }
 
 func Printf(format string, args ...interface{}) (n int, err error) {
