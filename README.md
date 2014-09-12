@@ -1,8 +1,19 @@
-Package colour provides [Quake-style colour formatting][1] for Unix terminals.
+# Colour terminal text for Go (Golang)
+
+Package colour ([docs][1]) provides [Quake-style colour formatting][2] for Unix terminals.
+
+The package level functions can be used to write to stdout (or strings or
+other files). If stdout is not a terminal, colour formatting will be
+stripped.
 
 eg.
 
-    Printf("^0black ^1red ^2green ^3yellow ^4blue ^5magenta ^6cyan ^7white^R\n")
+    colour.Printf("^0black ^1red ^2green ^3yellow ^4blue ^5magenta ^6cyan ^7white^R\n")
+
+
+For more control a Printer object can be created with various helper
+functions. This can be used to do useful things such as strip formatting,
+write to strings, and so on.
 
 The following sequences are converted to their equivalent ANSI colours:
 
@@ -28,4 +39,5 @@ The following sequences are converted to their equivalent ANSI colours:
 | ^U | Underline |
 | ^B | Bold |
 
-[1]: http://www.holysh1t.net/quake-live-colors-nickname/
+[1]: http://godoc.org/github.com/alecthomas/colour
+[2]: http://www.holysh1t.net/quake-live-colors-nickname/
