@@ -1,5 +1,7 @@
 // Package colour ([docs][1]) provides [Quake-style colour formatting][2] for Unix terminals.
 //
+// It is a drop-in replacement for the fmt package.
+//
 // The package level functions can be used to write to stdout (or strings or
 // other files). If stdout is not a terminal, colour formatting will be
 // stripped.
@@ -73,7 +75,9 @@ var (
 		'B': "\033[1m",
 	}
 
+	// Stdout is an conditional colour writer for os.Stdout.
 	Stdout = TTY(os.Stdout)
+	// Stderr is an conditional colour writer for os.Stderr.
 	Stderr = TTY(os.Stderr)
 )
 
