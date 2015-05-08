@@ -47,6 +47,8 @@ import (
 	"io"
 	"os"
 	"regexp"
+
+	"github.com/mattn/go-isatty"
 )
 
 var (
@@ -134,7 +136,7 @@ type Printer interface {
 // TTY creates a Printer that colourises output if w is a terminal, or strips
 // formatting if it is not.
 func TTY(w io.Writer) Printer {
-	if f, ok := w.(*os.File); ok && isTerminal(f) {
+	if f, ok := w.(*os.File); ok && isatty.IsTerminal(f.Fd()) {
 		return &colourPrinter{w}
 	}
 	return &stripPrinter{w}
@@ -242,13 +244,6 @@ func StripFormatting(s string) string {
 		}
 	}
 	return out.String()
-}
-
-func formatStringIfTty(w *os.File, s string) string {
-	if isTerminal(w) {
-		return FormatString(s)
-	}
-	return StripFormatting(s)
 }
 
 func stripArgs(args ...interface{}) []interface{} {
