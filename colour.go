@@ -52,7 +52,7 @@ import (
 )
 
 var (
-	extract = regexp.MustCompile(`(\^[0-9a-fRUB])|(\^\^)|([^^]+)`)
+	extract = regexp.MustCompile(`(\^[0-9a-fRDUB])|(\^\^)|([^^]+)`)
 	colours = map[byte]string{
 		'0': "\033[30m",
 		'1': "\033[31m",
@@ -72,9 +72,10 @@ var (
 		'e': "\033[46m",
 		'f': "\033[47m",
 
-		'R': "\033[0m",
+		'R': "\033[0m", // reset
+		'B': "\033[1m", // bold
+		'D': "\033[2m", // dim
 		'U': "\033[4m",
-		'B': "\033[1m",
 	}
 
 	// Stdout is an conditional colour writer for os.Stdout.

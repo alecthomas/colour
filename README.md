@@ -37,6 +37,7 @@ The following sequences are converted to their equivalent ANSI colours:
 | ^f | White Background |
 | ^R | Reset |
 | ^U | Underline |
+| ^D | Dim |
 | ^B | Bold |
 
 [1]: http://godoc.org/github.com/alecthomas/colour
