@@ -95,7 +95,7 @@ func Sprintln(args ...interface{}) string {
 }
 
 func Fprintln(w io.Writer, args ...interface{}) (n int, err error) {
-	return Colour(w).Println(args...)
+	return TTY(w).Println(args...)
 }
 
 func Print(args ...interface{}) (n int, err error) {
@@ -109,7 +109,7 @@ func Sprint(args ...interface{}) string {
 }
 
 func Fprint(w io.Writer, args ...interface{}) (n int, err error) {
-	return Colour(w).Print(args...)
+	return TTY(w).Print(args...)
 }
 
 func Printf(format string, args ...interface{}) (n int, err error) {
@@ -123,7 +123,7 @@ func Sprintf(format string, args ...interface{}) string {
 }
 
 func Fprintf(w io.Writer, format string, args ...interface{}) (n int, err error) {
-	return Colour(w).Printf(format, args...)
+	return TTY(w).Printf(format, args...)
 }
 
 // A Printer implements functions that accept Quake-style colour formatting
