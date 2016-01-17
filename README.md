@@ -1,6 +1,6 @@
-# Colour terminal text for Go (Golang)
+# Colour terminal text for Go (Golang) [![](https://godoc.org/github.com/alecthomas/colour?status.svg)](http://godoc.org/github.com/alecthomas/colour) [![Build Status](https://travis-ci.org/alecthomas/colour.png)](https://travis-ci.org/alecthomas/colour)
 
-Package colour ([docs][1]) provides [Quake-style colour formatting][2] for Unix terminals.
+Package colour provides [Quake-style colour formatting][2] for Unix terminals.
 
 The package level functions can be used to write to stdout (or strings or
 other files). If stdout is not a terminal, colour formatting will be
