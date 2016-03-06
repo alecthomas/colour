@@ -1,7 +1,7 @@
 package colour
 
 import (
-	"github.com/stretchrcom/testify/assert"
+	"github.com/alecthomas/assert"
 
 	"testing"
 )
