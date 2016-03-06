@@ -1,8 +1,7 @@
 package colour
 
 import (
-	"github.com/alecthomas/assert"
-
+	"reflect"
 	"testing"
 )
 
@@ -34,5 +33,7 @@ func TestStripArgs(t *testing.T) {
 	actual := []interface{}{1, 2, "^^^0black ^1red ^2green ^3yellow ^4blue ^5magenta ^6cyan ^7white^R", 3}
 	expected := []interface{}{1, 2, "^black red green yellow blue magenta cyan white", 3}
 	actual = stripArgs(actual...)
-	assert.Equal(t, expected, actual)
+	if !reflect.DeepEqual(expected, actual) {
+		t.Fatalf("Arguments did not strip correctly")
+	}
 }
