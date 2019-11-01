@@ -39,6 +39,7 @@ The following sequences are converted to their equivalent ANSI colours:
 | ^U | Underline |
 | ^D | Dim |
 | ^B | Bold |
+| ^S | Strikethrough |
 
 [1]: http://godoc.org/github.com/alecthomas/colour
 [2]: http://www.holysh1t.net/quake-live-colors-nickname/

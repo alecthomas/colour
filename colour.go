@@ -36,6 +36,7 @@
 //     ^R = Reset
 //     ^U = Underline
 //     ^B = Bold
+//     ^S = Strikethrough
 //
 // [1]: http://godoc.org/github.com/alecthomas/colour
 // [2]: http://www.holysh1t.net/quake-live-colors-nickname/
@@ -52,7 +53,7 @@ import (
 )
 
 var (
-	extract = regexp.MustCompile(`(\^[0-9a-fRDUB])|(\^\^)|([^^]+)`)
+	extract = regexp.MustCompile(`(\^[0-9a-fRDUBS])|(\^\^)|([^^]+)`)
 	colours = map[byte]string{
 		'0': "\033[30m",
 		'1': "\033[31m",
@@ -75,7 +76,8 @@ var (
 		'R': "\033[0m", // reset
 		'B': "\033[1m", // bold
 		'D': "\033[2m", // dim
-		'U': "\033[4m",
+		'U': "\033[4m", // underline
+		'S': "\033[9m", // strikethrough
 	}
 
 	// Stdout is an conditional colour writer for os.Stdout.
